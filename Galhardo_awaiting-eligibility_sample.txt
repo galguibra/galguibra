@@ -1,0 +1,98 @@
+=
+SORT(
+    LET(
+        participant_list, '[Couple and Participant Data.xlsm]Participant Communications'!$A$3:$A$218,
+
+        interview_status, '[Couple and Participant Data.xlsm]Participant Milestones'!$B$3:$B$218,
+
+        communications_status, '[Couple and Participant Data.xlsm]Participant Communications'!$H$3:$H$218,
+
+        names, '[Couple and Participant Data.xlsm]Participant Communications'!$D$3:$D$218,
+
+        language, '[Couple and Participant Data.xlsm]Participant Communications'!$E$3:$E$218,
+
+        phone, '[Couple and Participant Data.xlsm]Participant Communications'!$F$3:$F$218,
+
+        email, '[Couple and Participant Data.xlsm]Participant Communications'!$G$3:$G$218,
+
+        exit_survey_status, '[Couple and Participant Data.xlsm]Participant Milestones'!$E$3:$E$218,
+
+        participant_boolean_mask, (
+            ( ( interview_status = 0 ) * ( communications_status >= 0 ) * ( communications_status <= 2 ) ) + ( communications_status = -1 )
+        ),
+
+        visit_one, '[Couple and Participant Data.xlsm]Participant Milestones'!$C$3:$C$218,
+
+        couple_eligibility_dates, '[Couple and Participant Data.xlsm]Couple Timelines'!$E$3:$E$110,
+
+        individual_eligibility_dates, INDEX(
+            couple_eligibility_dates,
+
+            MAKEARRAY(
+                2 * ROWS( couple_eligibility_dates ),
+
+                1,
+
+                LAMBDA(
+					row,
+
+					col,
+
+                    0.5 * MROUND( row, 2 )
+                )
+            )
+        ),
+		
+		preferred_language, IF( ( language = 1 ), "Spanish", "English" ),
+		
+		best_available_contact_info, IF( ISBLANK( phone ), email, phone ),
+		
+		exit_survey_flag, IFS(
+			exit_survey_status = 1, "Complete",
+
+			exit_survey_status = 0, "Awaiting Eligibility",
+
+			exit_survey_status = -1, "Incomplete"
+        ),
+		
+		eligibility_flag, IFS(
+			communications_status = -1,
+
+			"Paused",
+
+			ISBLANK( visit_one ),
+
+			individual_eligibility_dates,
+
+			TRUE,
+
+			EDATE( individual_eligibility_dates, 12 )
+		),
+
+        FILTER(
+            HSTACK(
+                participant_list,
+
+                names,
+
+                preferred_language,
+
+                best_available_contact_info,
+
+				exit_survey_flag,
+
+				eligibility_flag
+            ),
+
+            participant_boolean_mask,
+			
+			MAKEARRAY( 1, 6, LAMBDA( row, col, "No participants awaiting eligibility" ) )
+        )
+    ),
+
+    6,
+
+    1,
+
+    FALSE
+)
