@@ -1,0 +1,283 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{mathtools}
+\usepackage[title]{appendix}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{manyfoot}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{thmstyletwo}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+\theoremstyle{thmstylethree}
+\newtheorem{definition}{Definition}
+
+\raggedbottom
+
+\title{\vspace{-50pt} Appendix A: Statistical Methods}
+\author{Guilherme Galhardo}
+
+\begin{document}
+
+\maketitle
+
+    \section{Motivation} The following section explicates the statistical theory underlying our data analysis process and provides an overview of respective computational methods. Due to the ordinal and non-Gaussian nature of our data, typical parametric statistics \textemdash such as, say, mean, standard deviation, etc \textemdash and methods such as ANOVA are not appropriate. An in-depth discussion of this issue is outside the scope of this paper, but the key principle at play is that ordinal data doesn't admit the same kinds of distance metrics as numerical data. 
+
+    \vspace{5pt}
+    
+    \par For example, we can easily calculate that the distance, or difference, between an observation of \$1.00 and \$5.00 for the cost of an item is $\left| \$5.00 - \$1.00 \right| = \$4.00$. And, critically, if we consider the distance between another pair of observations \textemdash such as $\left| \$9.00 - \$5.00 \right| = \$4.00$ \textemdash we can say with certainty that the three observations are, so to speak, evenly spaced: i.e., that the difference between \$5.00 and \$1.00 is the same as the difference between \$9.00 and \$5.00. What, though, is the distance between a Likert-Scale observation of 'Agree' and 'Somewhat Agree?' Is it the same as both the difference between 'Agree' and 'Strongly Agree,' as well as the difference between 'Disagree' and 'Somewhat Disagree,' and so on? Could we say that these differences are exactly the same for any respondent in any situation, and that they are precisely quantifiable in a consistent, generalizable way? Can we even be certain that two observations of 'Agree' actually represent the exact same level of agreement? 
+
+    \vspace{5pt}
+    
+    \par Certainly not. All we can generally say about these observations is that, up to a given construct, 'Agree' represents "more" agreement than 'Somewhat Agree,' and that there is a well-ordered ranking from 'Strongly Disagree' to 'Strongly Agree.' There are, however, various methods to work with ordinal data in a numerical form, such as by transforming a seven-point Likert Scale into the ordered set {1, 2, 3, 4, 5, 6, 7} \textemdash or, equivalently, {-3, -2, -1, 0, 1, 2, 3}. This allows the use of non-parametric statistical methods, which make fewer and less restrictive assumptions about the nature and distribution of observations.
+
+    \vspace{5pt}
+
+    \par As such, non-parametric methods were chosen in Cliff's $\delta$ for effect size and the Brunner-Munzel test for significance. The Brunner-Munzel test, in particular, was instrumental to our analysis, since it is robust to as few as ten observations per factor level, and many of our predictor bins were quite small. Moreover, between seven and ten observations per factor level, the permuted Brunner-Munzel test sustains performance, which enabled analyses with predictor bins containing as few as eight observations.
+
+    \vspace{10pt}
+
+    \section{Effect Size}
+
+    Cliff's $\delta$ is a robust statistic that measures stochastic dominance between two distributions $\mathcal{X}, \mathcal{Y}$. More specifically, given samples $X = \lbrace x_{1} \, \dots \, x_{i} \, \dots \, x_{n} \rbrace \text{ and } Y= \lbrace y_{1} \, \dots \, y_{j} \, \dots \, y_{m} \rbrace$ with $X \sim \mathcal{X} \text{ and } Y \sim \mathcal{Y}$ and for an arbitrary pair of observations $x_{i}, \, y_{j}$, $\hat{\delta} = \mathds{P}\left( x_{i} > y_{j} \right) - \mathds{P}\left( x_{i} < y_{j} \right)$. Order does matter when comparing samples, and $\hat{\delta}$ will be positive specifically when $X$ dominates $Y$, with the same test done in the reverse order yielding $-\hat{\delta}$. Cliff's $\delta$ is a non-parametric analogue of Cohen's d, and is therefore well-suited to distributions that are asymmetric and/or non-Gaussian. 
+
+        \vspace{10pt}
+
+        \subsection{Point Estimate}
+
+            We can compute $\hat{\delta}$ as a point estimate of $\delta$ using the following formulae:
+
+            \vspace{5pt}
+
+            \begin{equation}
+                \delta \left( i, \, j \right) \coloneqq \begin{cases} 
+                    +1, \hspace{5pt} \text{ if } x_{i} > y_{j} \\
+                    -1, \hspace{5pt} \text{ if } x_{i} < y_{j} \\
+                    \phantom{+}0, \hspace{5pt} \text{ if } x_{i} = y_{j}
+                \end{cases} \hspace{15pt} \text{for } i \in \left[ 1, \, n \right], \, j \in \left[ 1, \, m \right]
+            \end{equation}
+
+            \vspace{10pt}
+
+            \begin{equation}
+                \hat{\delta} = \frac{1}{nm} \cdot \sum_{i = 1}^{n} \sum_{j = 1}^{m} \delta \left( i, \, j \right)
+            \end{equation}
+
+            \vspace{10pt}
+
+           \noindent $\delta$ ranges from -1 to 1, with 0 indicating stochastic equivalence between $\mathcal{X}$ and $\mathcal{Y}$. More specifically, $\delta = 1$ implies that $\mathcal{X} \succeq \mathcal{Y}$, while $\delta = -1$ implies that $\mathcal{Y} \succeq \mathcal{X}$. In terms of effect size, $|\hat{\delta}| \in [0, 0.15)$ is generally considered negligible, $|\hat{\delta}| \in [0.15, 0.33)$ small, $|\hat{\delta}| \in [0.33, 0.47)$ moderate, and $| \hat{\delta}| \in [0.47, 1]$ large.
+
+        \vspace{10pt}
+
+       \subsection{Standard Error}
+
+            The standard error of $\hat{\delta}$ is defined by the following:
+
+            \begin{equation}
+                \delta_{r}(i) \coloneqq \frac{1}{m} \cdot \sum_{j=1}^{m} \delta \left( i, j \right)
+            \end{equation}
+
+            \vspace{10pt}
+
+            \begin{equation}
+                 \delta_{c}(j) \coloneqq \frac{1}{n} \cdot \sum_{i=1}^{n} \delta \left( i, j \right)
+            \end{equation}
+
+            \vspace{10pt}
+
+            \begin{equation}
+                 d_r \coloneqq \sum_{i=1}^{n} \left( \delta_{r}(i) - \delta \right)^{2}
+            \end{equation}
+           
+            \vspace{10pt}
+
+            \begin{equation}
+                 d_{c} \coloneqq \sum_{j=1}^{m} \left( \delta_{c}(j) - \delta \right)^{2}
+            \end{equation}
+
+            \vspace{10pt}
+
+            \begin{equation}
+                s_{\delta} = \sqrt{\frac{n^2 \cdot d_{r} + m^{2} \cdot d_{c} - \sum_{i = 1}^{n} \sum_{j = 1}^{m} \left( \delta \left( i, j \right) - \delta \right)^{2} }{nm \cdot (n - 1) \cdot (m - 1)}}
+            \end{equation}
+
+        \vspace{10pt}
+
+        \subsection{Confidence Intervals}
+
+            While a symmetric confidence interval with confidence level ($1 - \alpha$)\% can be constructed with $\hat{\delta} \, \pm \, s_{\delta} \cdot z_{\frac{\alpha}{2}}$, there exists a narrower, asymmetric interval given by the following expression:
+
+            \begin{equation}
+                \frac{\hat{\delta} - \hat{\delta}^{3} \, \pm \, z_{\frac{\alpha}{2}} \cdot s_{\delta} \sqrt{1 - 2 \cdot \hat{\delta}^{2} + \hat{\delta}^{4} + \left( z_{\frac{\alpha}{2}} \cdot \hat{\delta} \right)^{2}}}{1 - \hat{\delta}^{2} + \left( z_{\frac{\alpha}{2}} \cdot \hat{\delta} \right)^{2}}
+            \end{equation}
+
+            \vspace{15pt}
+
+            \par Rather than symmetry of real parameter magnitude about a midpoint estimate, this interval privileges probabilistic symmetry. In other words, the real distance between the point estimate and either extreme of the interval may be different, but the probability captured by either segment about the point estimate will be the same. In fact, using this asymmetric confidence interval, one can perform a coarse test of statistical significance: if, for a ($1 - \alpha$)\% confidence interval $I, \, 0 \in I$, then the result is not significant at level $\alpha$. A finer-grained analysis is typically warranted, particularly in post-hoc testing, but this method serves as a reasonable frame of reference.
+
+        \vspace{10pt}
+
+    \section{Significance Testing}
+
+        The Brunner-Munzel test is a non-parametric test for significance that replaces the Mann-Whitney test in cases where the test samples of interest have different variances or even come from different families of distributions. In terms of parametric methods, Brunner-Munzel is a non-parametric analogue to the Satterthwaite-Smith-Welch t-Test. Given samples $X = \{ x_1 \dots x_i \dots x_n \} \hspace{1pt} \text{ and } \hspace{1pt} Y= \{ y_1 \dots y_j \dots y_m \}$ with $X \sim \mathcal{X} \text{ and } Y \sim \mathcal{Y}$, and for an arbitrary pair of observations $x_i, \hspace{3pt} y_j$, Brunner-Munzel can be used to test null hypotheses of the following forms:
+
+        \vspace{10pt}
+
+        \begin{itemize}
+            \item \begin{center} \textbf{Two-Sided Hypothesis:} 
+                \begin{itemize}
+                    \item \begin{center} $H_{0}: \mathds{P}\left(  x_i < y_j \right) = \mathds{P}\left(  y_j < x_i \right)$
+                    \end{center}
+                \end{itemize}
+            \end{center}
+            
+            \item \begin{center} \textbf{One-Sided Hypotheses:}
+                \begin{itemize}
+                    \item \begin{center} $H_{0}: \mathds{P}\left(  x_i < y_j \right) > \mathds{P}\left(  y_j < x_i \right)$
+                    \end{center}
+
+                    \vspace{5pt}
+                    
+                    \item \begin{center}$H_{0}: \mathds{P}\left(  x_i < y_j \right) < \mathds{P}\left(  y_j < x_i \right)$
+                    \end{center}
+                \end{itemize}
+            \end{center}
+        \end{itemize}
+        
+        \vspace{10pt}
+
+        In the following subsections, we will explore the formulation of the test as described in (Brunner \& Munzel, 2000).
+
+        \subsection{Relative Treatment Effect}
+
+            \subsubsection{Notation}
+            In order to evaluate the relative ranks of all observations $(x_{i})\,_{i=1}^{n}$ and $(y_{j})\,_{j=1}^{m}$, we first consider the union of the two test samples, $A \coloneqq X \cup Y$, with elements indexed as $a_{(k, \, l)}$ and cardinality $\left| A \right| = N = n + m$. For ease of computation, we rename the two test samples and their cardinalities such that $X = A_{1}$ with $n_{1}$ elements and $Y = A_{2}$ with $n_{2}$ elements, indexed by $k$ such that $A = \bigcup_{k = 1}^{2} \, A_{k}$. So, for any element $x_{i} \in X \text{ with } i \in [1, \, n]$, we write $a_{(1, \, l)}$, with $l \in [1, \, n_{1}].$ Likewise, for any element $y_{j} \in Y \text{ with } j \in [1, \, m]$, we write $a_{(2, \, l)}$, with $l \in [1, \, n_{2}].$ Moreover, we will denote the distributions of the test samples $X \text{ and } Y$, $\mathcal{X} \text{ and } \mathcal{Y}$, by $F_{k}(a)$ such that $A_{k} \sim F_{k}$, with expectation $\mu_{k}$, variance $\sigma_{k}^{2}$, and combined distribution function $H(a) = \frac{1}{N} \cdot \sum_{k=1}^{2} n_{k} \cdot F_{k}(a)$.
+    
+            \vspace{5pt}
+    
+            \subsubsection{Derivation of \texorpdfstring{$\hat{p}$}{̂p}} 
+            If we define the relative treatment effect as $p = \mathds{P}\left(  x_i < y_j \right) \, + \, \frac{1}{2} \cdot \mathds{P}\left(  x_i = y_j \right), \, p = 0.5 \iff \mu_{1} = \mu_{2}$ will correspond to the two-sided null hypothesis and $p < 0.5 \iff \mu_{1} > \mu_{2}$ and $p > 0.5 \iff \mu_{1} < \mu_{2}$ will respectively correspond to each of the one-sided nulls. In order to test these hypotheses, we will use normalizations of the distribution functions $F_{k}(a)$ such that $\mathcal{F}_{k}(a) = \frac{1}{2} \cdot \left[ F_{k}^{-}(a) + F_{k}^{+}(a) \right]$. Here, for arbitrary $a_{(k, \, l)} \in A_{k}$, $F_{k}^{-}(a) = \mathds{P}\left( a_{(k, \, l)} < a \right)$ is the left-continuous distribution function, and  $F_{k}^{+}(a) = \mathds{P}\left( a_{(k, \, l)} \leq a \right)$ is the right-continuous distribution function. We can then define the relative treatment effect as $p = \int F_{1} \, \text{d} F_{2}$
+    
+            \vspace{5pt}
+    
+            \par In order to estimate $p$ by its sample parameter $\hat{p}$, we will use approximations of the distribution functions in $\hat{F}_{k}(a)$ such that our approximation of the normalized, combined distribution function is $\hat{\mathcal{H}}(a) = \frac{1}{N} \cdot \sum_{k=1}^{2} n_{k} \cdot \hat{\mathcal{F}}_{k}(a)$. Letting $R{(k, \, l)}$ be the rank of $a_{(k, \, l)}$ within $A$, $R_{k}(k, \, l)$ be the rank of $a_{(k, \, l)} \in A_{k}$ within $A_{k}$, and $\bar{R}_{k}$ be the mean of the within rankings $R_{k}$ of sample $A_{k}$, we construct the following equations:
+    
+                \vspace{5pt}
+                
+                \begin{equation}
+                    R{(k, \, l)} = \frac{1}{2} + N \cdot \hat{\mathcal{H}}(a_{(k, \, l)}) 
+                \end{equation}
+    
+                \vspace{10pt}
+    
+                \begin{equation}
+                    \bar{R_{k}} = \frac{1}{n_{k}} \cdot \sum_{l=1}^{n_{k}} R{(k, \, l)}
+                \end{equation}
+    
+                \vspace{10pt}
+    
+            \noindent In the case of tied rankings between $Q$ such elements of an arbitrary set $\mathcal{A} \coloneqq \lbrace a_{q} \, | \,  a_{q_{i}} = a_{q_{j}} \, \forall \, i, \, j \in [1, \, Q] \rbrace$, we assign the midrank between all $Q$ elements to every $a_{(k, \, l)} \in \mathcal{A}$. That is, for the $Q$ tied ranks in the ordinal set $\lbrace a_{(1)}, \, a_{(2)}, \, \dots ,\, a_{(i = q_{1})}, \, \dots ,\, a_{(j = q_{Q})}, \, \dots \,,\, a_{(N)}\rbrace$, we would assign the mean rank of $w_{\bar{q}} = \frac{1}{(j \, - \, i) \, + \, 1} \cdot \sum_{w_{q} \, = \, i}^{j} \, (w_{q})$ to all the $a_{q} \in \mathcal{A}$, where $(w_{q})$ is the rank of each element if we were to simply choose an arbitrary order for the elements of $\mathcal{A}$ and continue to increment the ranks as normal.
+    
+            \vspace{5pt}
+    
+            \par Let $\mathcal{C}(u)$ be the normalized count function, such that $\mathcal{C}(u) \mapsto \lbrace 0, \, \frac{1}{2}, \, 1\rbrace$ as $u$ evaluates to $<, \, =, \, >$, respectively. It then follows that we can calculate $\hat{p}$ using the formula below:
+    
+                \vspace{10pt}
+    
+                \begin{equation}
+                    \hat{p} = E[ \, \mathcal{C}(A_{(2, \, 1)} - A_{(1, \, 1)}) \, ] = \int \hat{F}_{1} \, \text{d} \hat{F}_{2} = \frac{1}{n_{1}} \cdot \left( \bar{R}_{2} - \frac{n_{2} + 1}{2} \right)
+                \end{equation}
+
+                \vspace{10pt}
+                
+            \subsubsection{Derivation of \texorpdfstring{$\hat{\sigma}_{N}^{2}$}{̂σₙ²}}
+
+            Define $G_{(k_{i}, \, l)} \coloneqq F_{k_{j}} \left( A_{(k_{i}, \, l)} \right), \text{ with } l \in [1, \, n_{k_{i}}]$, and $\bar{G}_{k_{i}} \coloneqq \frac{1}{n_{k_{i}}} \cdot \sum_{l=1}^{n_{k_{i}}} F_{k_{j}} \left( A_{(k_{i}, \, l)} \right)$. Then, $\sigma_{k_{i}}^{2}$ can be estimated using the approximation below:
+            
+            \begin{equation}
+                \tilde{\sigma}_{k_{i}}^{2} = \frac{1}{n_{k_{i}} \, -  \,1} \cdot \sum_{l=1}^{n_{k_{i}}} \left( G_{(k_{i}, \, l)} - \bar{G}_{k_{i}} \right)^{2} 
+            \end{equation}
+
+            \vspace{10pt}
+
+            \noindent Replacing the unknown distribution functions above with their previously derived, normalized approximations and letting the within rank $R_{k_{j}}(k_{j}, \, l) = \frac{1}{2} + n_{k_{i}} \cdot \hat{\mathcal{F}}_{k_{i}} \left( A_{(k_{i}, \, l)} \right)$, we proceed as follows:
+
+            \begin{equation}
+                n_{k_{i}} \cdot \hat{\mathcal{F}}_{k_{i}} \left( A_{(k_{j}, \, l)} \right) = N \cdot \hat{\mathcal{H}} \left( A_{(k_{j}, \, l)} \right) - n_{k_{j}} \cdot \hat{\mathcal{F}}_{k_{j}} \left( A_{(k_{j}, \, l)} \right) = R(k_{j}, \, l) - R_{k_{j}}(k_{j}, \, l)
+            \end{equation}
+
+            \vspace{10pt}
+
+            \noindent Using the above, we can then calculate $\hat{\sigma}_{k_{i}}^{2}$ with the following formulae:
+
+            \vspace{10pt}
+
+            \begin{equation}
+                S_{k_{i}}^{2} = \frac{1}{n_{k_{i}} - 1} \cdot \sum_{l=1}^{n_{k_{i}}} \left( R(k_{j}, \, l) - R_{k_{j}}(k_{j}, \, l) - \bar{R}_{k} + \frac{n_{k_{i}} + 1}{2} \right)^{2}
+            \end{equation}
+
+            \vspace{10pt}
+
+            \begin{equation}
+                \hat{\sigma}_{k_{i}}^{2} = \frac{S_{k_{i}}^{2}}{(N - n_{k_{i}})^{2}}
+            \end{equation}
+
+            \vspace{10pt}
+
+            \noindent Finally, with both sample variances accounted for, we can compute a combined variance of $\hat{\sigma}_{N}^{2} = N \cdot \left[ \frac{\hat{\sigma}_{1}^{2}}{n_{1}} + \frac{\hat{\sigma}_{2}^{2}}{n_{2}}\right]$
+
+            \vspace{10pt}
+
+            \subsubsection{The \texorpdfstring{$W_{N}^{BF}$}{Wₙᷨ ᷫ } Test Statistic}
+
+            In order to test the relative treatment effect, we will use the Behrens-Fisher $W$ with a Satterthwaite-Smith-Welch distribution. Proving the normality of the test statistic is beyond the scope of this paper, but suffice it to say that the following test statistic is asymptotically normal under the null hypothesis:
+
+            \vspace{10pt}
+
+            \begin{equation}
+                W_{N}^{BF} = \frac{\left(\hat{p} - \frac{1}{2} \right) \cdot \sqrt{N}}{\hat{\sigma}_{N}} = \frac{\bar{R}_{2} - \bar{R}_{1}}{\hat{\sigma}_{N} \cdot \sqrt{N}}
+            \end{equation}
+
+            \vspace{10pt}
+
+            \noindent Furthermore, we can estimate the degrees of freedom by using the Welch-Satterthwaite equation. If the degrees of freedom of each sample variance is given by $\nu_{i} = n_{i} - 1$, then:
+
+            \begin{equation}
+                \nu_{\chi'} \approx \frac{\left( \frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}\right)^{2}}{\frac{S_{1}^{4}}{n_{1}^{2} \cdot \nu_{1}} + \frac{S_{2}^{4}}{n_{2}^{2} \cdot \nu_{2}}}
+            \end{equation}
+
+            \vspace{10pt}
+
+            \noindent And, in the case of small sample sizes--which might otherwise lead to degeneration of the variance estimators--we can instead apply the following estimate for degrees of freedom:
+
+            \begin{equation}
+                \hat{f} = \frac{\left( \sum_{i=1}^{2} \frac{\hat{\sigma}_{i}^{2}}{n_{i}} \right)^{2}}{\sum_{i=1}^{2} \frac{\left( \frac{\hat{\sigma}_{i}^{2}}{n_{i}} \right)^{2}}{n_{i} \, - \, 1}} = \frac{\left( \sum_{i=1}^{2} \frac{S_{i}^{2}}{N \, - \, n_{i}} \right)^{2}}{\sum_{i=1}^{2} \frac{\left[ \frac{S_{i}^{2}}{N \, - \, n_{i}} \right]^{2}}{n_{i} \, - \, 1}}
+            \end{equation}
+
+        \vspace{10pt}
+
+    \newpage
+
+    \section{References}
+
+    Brunner, E., \& Munzel, U. (2000). The Nonparametric Behrens-Fisher Problem: Asymptotic Theory and a Small-Sample Approximation. Biometrical Journal, 42(1), 17–25. doi:10.1002/(sici)1521-4036(200001)42:1<17::aid-bimj17>3.0.co;2-u 
+
+\end{document}
