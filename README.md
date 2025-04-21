@@ -38,7 +38,7 @@ than you arrived :)
 
 ## Overview
 
-&emsp; &emsp; At the moment, my featured content includes work in both Python and Excel. These samples came from a research project on father-inclusive pre-natal care and parenting-readiness 
+&emsp; &emsp; At the moment, my featured content includes work in Python, LaTex, and Excel. These samples came from a research project on father-inclusive pre-natal care and parenting-readiness 
 interventions, making use of a variety of scientific computing libraries like numpy, pandas, scipy, the HoloViz ecosystem, and JupyterLab. There's a mix of quantitative analyses, interactive 
 vizualizations, data-management and querying tools, and more. Included below are the broad strokes of each sample's purpose, as well as some additional context.
 
