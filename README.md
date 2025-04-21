@@ -39,7 +39,9 @@ levels, and very small sample sizes *within* factor levels, most typical statist
 
 #### Batch CSV Loader
 
-&emsp; &emsp; I coded the load_csv module to handle the majority of that process on its own, and to prepare datasets for easy collation and merging during later steps in the analysis process.
+&emsp; &emsp; I coded the load_csv module to handle the majority of that process on its own, and to prepare datasets for easy collation and joining during later steps in the analysis process. I also wanted to future-proof the module
+for use in the reproduction distribution of the project files, so I made sure to include robust, modular import tools rather than just relying on local file paths. The module made it very straightforward to just list whichever data files
+I needed in the moment and lazy load them in an easily workable format, with each dataset already set up to combine with others for joint analysis, data binning, visualization, etc.
 
 
 #### Permuted, Non-Parametric Hypothesis Testing
@@ -47,9 +49,12 @@ levels, and very small sample sizes *within* factor levels, most typical statist
 &emsp; &emsp; Ordinal data doesn't admit measures like the mean and standard deviation, so I already knew I'd need a non-parametric test. We also had heavily skewed, multi-modal data, so any test I chose would need to be very robust. 
 In particular, one factor level had only seven observations and needed to be compared to a level with twenty-eight observations, so I also needed a test that was permuted and made few assumptions about central tendency and variance between 
 distributions. Given all of these restrictions and the fact that there are only so many statistical tests with standard, accessible implentations, I settled on the Brunner-Munzel test for significance, with Cliff's delta as a measure of
-effect size. The permuted Brunner-Munzel test can quickly become computationally expensive for larger sample sizes, though, so I made sure to implement some conditional logic to only use the permuted variant of the test when necessary.
+effect size. 
+
+&emsp; &emsp; The permuted Brunner-Munzel test can quickly become computationally expensive for larger sample sizes, though, so I made sure to implement some conditional logic to only use the permuted variant of the test when necessary.
 Unfortunately, only having access to one, low-power laptop and no remote compute cluster, this still meant several hours of compute time each time. After several trial runs and tweaks to the program, I managed to get things down to about
-1.5–2 hours of compute time. The base package for the permuted Brunner-Munzel test still remained a major limiting factor, though, so writing one of my own with more array optimization is definitely on my to-do list.
+1.5–2 hours of compute time. The base package for the permuted Brunner-Munzel test still remained a major limiting factor, though, and I couldn't find any alternatives already coded for Python, so writing one of my own with more array 
+optimization is definitely on my to-do list.
 
 
 ### Excel
