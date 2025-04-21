@@ -7,6 +7,10 @@
 - [Overview](https://github.com/galguibra/galguibra/blob/main/README.md#overview)
 
     - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
+ 
+        - [Batch CSV Loader]()
+     
+        - [Non-Parametric Hypothesis Testing]()
 
     - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
 
@@ -25,11 +29,21 @@ Included below are the broad strokes of each sample's purpose, as well as some a
 
 ### Python
 
-These samples were written to help process, analyze, and visualize ordinal, Likert-scale data from a series of REDCap surveys. The pre-existing data management system only made the data available in raw CSV files—each measure,
-timepoint, and participant record completely unlinked—so it needed a lot of processing before I could work with it effectively. 
+&emsp; &emsp; These samples were written to help process, analyze, and visualize ordinal, Likert-scale data from a series of REDCap surveys. The pre-existing data management system only made the data available in raw CSV files—each measure,
+timepoint, and participant record completely unlinked—so it needed a lot of processing before I could work with it effectively. Likewise, because of the non-Gaussian distribution of the data, differently shaped distributions across factor
+levels, and very small sample sizes *within* factor levels, most typical statistical tools like, say, an ANOVA, wouldn't be valid. In particular, one factor level had only seven observations, so I needed a test that was permuted and 
+non-parametric, with few assumptions about central tendency and variance between distributions.
+
+#### Batch CSV Loader
+
+&emsp; &emsp; I coded the load_csv module to handle the majority of that process on its own, and to prepare datasets for easy collation and merging during later steps in the analysis process.
+
+#### Permuted, Non-Parametric Hypothesis Testing
+
+&emsp; &emsp; .
 
 ### Excel
 
-As for the Excel samples, I wrote them as part of a user-friendly data dashboard for people on the project team who might not be familiar with and/or comfortable using more formal database applications. I designed the system to auto-update 
-itself based on basic data inputs like participant contact information, study visit dates, survey completion, engagement status, etc., with the back-end machinery in a separate workbook to simplify the front-facing toolkit. Complete with 
-recruitment/retention trackers, statistical overviews, information on recent and upcoming follow-ups, and lots of dynamic array functionalities to keep things tidy, it really helped to streamline project data management.
+&emsp; &emsp; As for the Excel samples, I wrote them as part of a user-friendly data dashboard for people on the project team who might not be familiar with and/or comfortable using more formal database applications. I designed the system to 
+auto-update itself based on basic data inputs like participant contact information, study visit dates, survey completion, engagement status, etc., with the back-end machinery in a separate workbook to simplify the front-facing toolkit. 
+Complete with recruitment/retention trackers, statistical overviews, information on recent and upcoming follow-ups, and lots of dynamic array functionalities to keep things tidy, it really helped to streamline project data management.
