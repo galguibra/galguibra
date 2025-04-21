@@ -11,8 +11,16 @@
         - [Batch CSV Loader](https://github.com/galguibra/galguibra/blob/main/README.md#batch-csv-loader)
      
         - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
+     
+        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/galguibra/blob/main/README.md#interactive-data-vizualization-dashboard)
 
     - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
+ 
+        - [Tracking Participants Awaiting Follow-Up Eligibility](https://github.com/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility)
+     
+        - [Participant Record Query Tool](https://github.com/galguibra/galguibra/blob/main/README.md#participant-record-query-tool)
+
+       
 
 
 ## Introduction
@@ -57,8 +65,23 @@ Unfortunately, only having access to one, low-power laptop and no remote compute
 optimization is definitely on my to-do list.
 
 
+#### Interactive Data-Visualization Dashboard
+
+&emsp; &emsp; .
+
+
 ### Excel
 
 &emsp; &emsp; As for the Excel samples, I wrote them as part of a user-friendly data dashboard for people on the project team who might not be familiar with and/or comfortable using more formal database applications. I designed the system to 
 auto-update itself based on basic data inputs like participant contact information, study visit dates, survey completion, engagement status, etc., with the back-end machinery in a separate workbook to simplify the front-facing toolkit. 
 Complete with recruitment/retention trackers, statistical overviews, information on recent and upcoming follow-ups, and lots of dynamic array functionalities to keep things tidy, it really helped to streamline project data management.
+
+
+#### Tracking Participants Awaiting Follow-Up Eligibility
+
+&emsp; &emsp; .
+
+
+#### Participant Record Query Tool
+
+&emsp; &emsp; .
