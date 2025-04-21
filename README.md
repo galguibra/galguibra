@@ -12,7 +12,7 @@
      
         - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
      
-        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/galguibra/blob/main/README.md#interactive-data-vizualization-dashboard)
+        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/galguibra/blob/main/README.md#interactive-data-visualization-dashboard)
 
     - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
  
