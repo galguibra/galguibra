@@ -142,9 +142,9 @@ class CSV:
         # sets initial namespace directory to generate file path.
         self.path = "resources.raw"
 
-        """adjusts working directory as needed to further specify file path.
+        """Adjusts working directory as needed to further specify file path.
 
-        also sets bounds for file import by checking the file name against
+        Also sets bounds for file import by checking the file name against
         the index of its rightmost column.
         """
         if self.name in FILE_DICT["non-data"].keys():
@@ -181,7 +181,7 @@ class CSV:
             )
 
     def __call__(self) -> pd.DataFrame:
-        """Make self.df assignable by calling the CSV.
+        """Make self.df directly assignable by calling the CSV.
 
         Returns
         -------
@@ -212,7 +212,9 @@ def load_csv(
     Returns
     -------
     frames : pd.DataFrame | list[pd.DataFrame]
-        list of pandas dataframes corresponding to each file input.
+        List of pandas dataframes corresponding to each file input. If there
+        is only one dataframe, load_csv will return it directly instead of
+        creating a singleton list.
 
     """
     names = names
