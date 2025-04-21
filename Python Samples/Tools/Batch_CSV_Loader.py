@@ -1,11 +1,12 @@
-"""Processes CSV imports into pandas DataFrames.
+"""Processes CSV imports into pandas dataframes.
 
 Summary
 -------
     load_csv is based on the existing pandas.read_csv, but allows batch
     importing while leveraging a pre-defined nested dictionary and a CSV object
     class to manage relative paths to the appropriate directory within the
-    resource namespace package.
+    resource namespace package. Also labels index axis of participants so that
+    datasets can be easily joined later.
 
 """
 
@@ -170,7 +171,7 @@ class CSV:
 
         csv = importlib.resources.files(self.path)
 
-        # reads file into a pandas dataframe.
+        # Reads file into a pandas dataframe and labels index axis.
         with importlib.resources.as_file(csv / f"{name}.csv") as file:
 
             self.df = pd.read_csv(
@@ -179,6 +180,8 @@ class CSV:
                 usecols=np.arange(self.bound),
                 header=self.header,
             )
+
+            self.df.rename_axis("Participant", inplace=True)
 
     def __call__(self) -> pd.DataFrame:
         """Make self.df directly assignable by calling the CSV.
