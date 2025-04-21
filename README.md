@@ -2,9 +2,13 @@
 
 ## Table of Contents
 
-- [Introduction](https://github.com/galguibra/galguibra/tree/main#introduction)
+- [Introduction](https://github.com/galguibra/galguibra/blob/main/README.md#introduction)
 
-- [Overview](https://github.com/galguibra/galguibra/tree/main#overview)
+- [Overview](https://github.com/galguibra/galguibra/blob/main/README.md#overview)
+
+- [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
+
+- [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
 
 ## Introduction
 
