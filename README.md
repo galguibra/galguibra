@@ -15,6 +15,17 @@ interested observer, I'm always open to constructive critique. That said, here's
 
 ## Overview
 
-&emsp; &emsp; At the moment, my featured content includes work in both Python and Excel. The Python samples come from a research project on father-inclusive pre-natal care and parenting-readiness interventions, making use
-of a variety of scientific computing libraries like numpy, pandas, and scipy, among others. Taken from a larger, in-development package meant to facilitate reproduction of the project and its analyses, I coded these samples
-to help process, analyze, and visualize ordinal, Likert-scale data on parenting behaviors and self-assessment of readiness and role-adjustment in first-time v.s. multiparous parents.
+&emsp; &emsp; At the moment, my featured content includes work in both Python and Excel. These samples came from a research project on father-inclusive pre-natal care and parenting-readiness interventions, making use
+of a variety of scientific computing libraries like numpy, pandas, scipy, the HoloViz ecosystem, and JupyterLab. There's a mix of quantitative analyses, interactive vizualizations, data-management and querying tools, and more.
+Included below are the broad strokes of each sample's purpose, as well as some additional context.
+
+### Python
+
+These samples were written to help process, analyze, and visualize ordinal, Likert-scale data from a series of REDCap surveys. The pre-existing data management system only made the data available in raw CSV files—each measure,
+timepoint, and participant record completely unlinked—so it needed a lot of processing before I could work with it effectively. 
+
+### Excel
+
+As for the Excel samples, I wrote them as part of a user-friendly data dashboard for people on the project team who might not be familiar with and/or comfortable using more formal database applications. I designed the system to auto-update 
+itself based on basic data inputs like participant contact information, study visit dates, survey completion, engagement status, etc., with the back-end machinery in a separate workbook to simplify the front-facing toolkit. Complete with 
+recruitment/retention trackers, statistical overviews, information on recent and upcoming follow-ups, and lots of dynamic array functionalities to keep things tidy, it really helped to streamline project data management.
