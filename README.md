@@ -6,9 +6,9 @@
 
 - [Overview](https://github.com/galguibra/galguibra/blob/main/README.md#overview)
 
-- [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
+    - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
 
-- [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
+    - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
 
 ## Introduction
 
