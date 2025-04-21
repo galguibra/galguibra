@@ -8,9 +8,9 @@
 
     - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
  
-        - [Batch CSV Loader]()
+        - [Batch CSV Loader](https://github.com/galguibra/galguibra/blob/main/README.md#batch-csv-loader)
      
-        - [Non-Parametric Hypothesis Testing]()
+        - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
 
     - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
 
