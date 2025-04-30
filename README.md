@@ -41,12 +41,12 @@ interventions, making use of a variety of scientific computing libraries like nu
 vizualizations, data-management and querying tools, and more. Included below are the broad strokes of each sample's purpose, as well as some additional context.
 
 
-### Python
+> ### Python
 
-&emsp; &emsp; These samples were written to help process, analyze, and visualize ordinal, Likert-scale data from a series of REDCap surveys. The pre-existing data management system only made the 
-data available in raw CSV files—each measure, timepoint, and participant record completely unlinked—so it needed a lot of processing before I could work with it effectively. Likewise, because of 
-the non-Gaussian distribution of the data, differently shaped distributions across factor levels, and very small sample sizes *within* factor levels, most typical statistical tools like, e.g. 
-ANOVA, wouldn't be valid. These scripts were all written with these issues in mind, and I made sure to include lots of tools to make the data and its complications as legible as possible.
+>> &emsp; &emsp; These samples were written to help process, analyze, and visualize ordinal, Likert-scale data from a series of REDCap surveys. The pre-existing data management system only made the 
+>> data available in raw CSV files—each measure, timepoint, and participant record completely unlinked—so it needed a lot of processing before I could work with it effectively. Likewise, because of 
+>> the non-Gaussian distribution of the data, differently shaped distributions across factor levels, and very small sample sizes *within* factor levels, most typical statistical tools like, e.g. 
+>> ANOVA, wouldn't be valid. These scripts were all written with these issues in mind, and I made sure to include lots of tools to make the data and its complications as legible as possible.
 
 
 #### Batch CSV Loader
