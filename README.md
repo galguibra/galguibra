@@ -72,17 +72,28 @@ major limiting factor, though, and I couldn't find any alternatives already code
 
 #### Interactive Data-Visualization Dashboard
 
-&emsp; &emsp; .
+&emsp; &emsp; This dashboard is built using the HoloViz ecosystem, served through panel with a bokeh backend and largely implemented through param and holoviews. It leverages inputs from both pandas as well as
+xarray, and outputs them to interactive overlays. Users can choose a dataset, filter by participant stratum and time point, and even scroll through a selected cross-section of the data in individual slices.
+And, while data for each couple is shown in paired scatters of each participant, the plot also includes a dynamic violin overlay that allows the user to compare individual couples' data to the larger distribution
+of participants within their stratum. The kernel density estimates are even split by parenting role, providing a fine-grained view of patterns within the dataset.
 
 
 ### LaTeX
 
-&emsp; &emsp; .
+&emsp; &emsp; Selections here are samples of scientific writing typeset in a LaTeX markup. For anyone who hasn't had the pleasure of using it, LaTeX is a word-processing language that allows
+complex symbology, varying scripts, and fully customizable layouts to co-exist in a user-friendly system based on descriptive macros. It's open-source with lots of community packages , and you can edit
+a .tex file in any text editor before rendering it into, say, a PDF. There are even online editors that let you edit and compile side-by-side in real time! I picked it up in the math department during undergrad,
+and while it definitely carries a bit of a learning curve, I've yet to find another typesetting system with quite as much functionality and consistency.
 
 
 #### Statistical Appendix
 
-&emsp; &emsp; .
+&emsp; &emsp; Written as a companion piece to the data analysis performed using the [hypothesis-testing program](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
+from the Python section above, this appendix walks through the motivation and methodology behind all the statistics. More than just making a case for my statistical tools of choice, I wanted to provide any interested parties
+with all the information they'd need to actually understand how these tools work and how you can calculate them beyond just plugging numbers into a computer. I've spent a lot of time over the years chasing down
+practical explanations for methods presented in research papers, and I feel like it's the least you can do for your audience if you're including anything unusual or obscure in your methodology. I broke everything
+down into more digestible chunks, and I made sure to expand on and clarify any potentially confusing notation with unique variables and explicit description, referencing source material as-needed from the originators
+of the methods in question.
 
 
 ### Excel
