@@ -136,7 +136,8 @@ with automatic conditional formatting, so entries would be created, formatted, d
 #### Participant Record Query Tool
 
 &emsp; &emsp; Having so much retention data for each participant, I wanted to make sure there was one, simple, effective tool to skim only the most essential and broadly useful information, and that it would allow
-users to look up several different participants at the same time. Much like a spill array, but dependent on user input and not an automated pipeline, the query tool dynamically formats and clears itself as users
-add and delete entries in the look-up column. You can get contact info, engagement and eligibility status, and check for any communications restrictions like study withdrawal or incarceration. Pulling all of this
-information efficiently from several different sources took multiple layers of temporary, interdependent variables and boolean masking, and I made sure to treat potential exceptions for each record field on an
-individual basis so that if, say, the look-up ID were invalid or a field didn't practically apply to the participant in question, there would be no head scratching required.
+users to look up several different participants at the same time. Much like the [spill array](https://github.com/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility) above,
+albeit dependent on user input and not an automated pipeline, the query tool dynamically formats and clears itself as users add and delete entries in the look-up column. You can get contact info, engagement and
+eligibility status, and check for any communications restrictions like study withdrawal or incarceration. Pulling all of this information efficiently from several different sources took multiple layers of temporary,
+interdependent variables and boolean masking, and I made sure to treat potential exceptions for each record field on an individual basis so that if, say, the look-up ID were invalid or a field didn't practically
+apply to the participant in question, there would be no head scratching required.
