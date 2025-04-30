@@ -8,7 +8,7 @@ ___
 
 - [Introduction](https://github.com/galguibra/galguibra/blob/main/README.md#introduction)
 
-- [Overview](https://github.com/galguibra/galguibra/blob/main/README.md#overview)
+- [Overviews](https://github.com/galguibra/galguibra/blob/main/README.md#overviews)
 
     - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
  
@@ -46,7 +46,7 @@ vizualizations, data-management and querying tools, and more. Included below are
 
 ___
 
-## Overview
+## Overviews
 
 ___
 
@@ -129,9 +129,14 @@ eligibility date. The tracker would pull best available contact info and preferr
 they would become eligible for a follow-up. This also enabled me to track all of the partcipants coming due in, say, the next month or week, and pull those aside so we could plan for how many interviews we might
 need to schedule and when. Eligibility dates were determined at the couple level in a backend spreadsheet based on delivery dates, so—rather than have to duplicate these calculations or make helper columns, I
 put together a custom dynamic array function to pull participant IDs in pairwise chunks and assign them to couple numbers in a virtual array, then manipulating that to calculate and output eligibility dates
-while still only performing one date calculation per pair of coupled participants, and without having to store any intermediate data clutter within the sheet itself.
+while still only performing one date calculation per pair of coupled participants, and without having to store any intermediate data clutter within the sheet itself. I also organized all of this as a spill array
+with automatic conditional formatting, so entries would be created, formatted, deleted, and cleared with one, integrated system.
 
 
 #### Participant Record Query Tool
 
-&emsp; &emsp; .
+&emsp; &emsp; Having so much retention data for each participant, I wanted to make sure there was one, simple, effective tool to skim only the most essential and broadly useful information, and that it would allow
+users to look up several different participants at the same time. Much like a spill array, but dependent on user input and not an automated pipeline, the query tool dynamically formats and clears itself as users
+add and delete entries in the look-up column. You can get contact info, engagement and eligibility status, and check for any communications restrictions like study withdrawal or incarceration. Pulling all of this
+information efficiently from several different sources took multiple layers of temporary, interdependent variables and boolean masking, and I made sure to treat potential exceptions for each record field on an
+individual basis so that if, say, the look-up ID were invalid or a field didn't practically apply to the participant in question, there would be no head scratching required.
