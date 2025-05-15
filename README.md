@@ -6,27 +6,27 @@ ___
 
 ___
 
-- [Introduction](https://github.com/galguibra/blob/main/README.md#introduction)
+- [Introduction](https://github.com/galguibra/galguibra/blob/main/README.md#introduction)
 
-- [Overview](https://github.com/galguibra/blob/main/README.md#overview)
+- [Overview](https://github.com/galguibra/galguibra/blob/main/README.md#overview)
 
-    - [Python](https://github.com/galguibra/blob/main/README.md#python)
+    - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
  
-        - [Batch CSV Loader](https://github.com/galguibra/blob/main/README.md#batch-csv-loader)
+        - [Batch CSV Loader](https://github.com/galguibra/galguibra/blob/main/README.md#batch-csv-loader)
      
-        - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
+        - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
      
-        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/blob/main/README.md#interactive-data-visualization-dashboard)
+        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/galguibra/blob/main/README.md#interactive-data-visualization-dashboard)
      
-    - [LaTeX](https://github.com/galguibra/blob/main/README.md#latex)
+    - [LaTeX](https://github.com/galguibra/galguibra/blob/main/README.md#latex)
  
-        - [Statistical Appendix](https://github.com/galguibra/blob/main/README.md#statistical-appendix)
+        - [Statistical Appendix](https://github.com/galguibra/galguibra/blob/main/README.md#statistical-appendix)
 
-    - [Excel](https://github.com/galguibra/blob/main/README.md#excel)
+    - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
  
-        - [Tracking Participants Awaiting Follow-Up Eligibility](https://github.com/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility)
+        - [Tracking Participants Awaiting Follow-Up Eligibility](https://github.com/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility)
      
-        - [Participant Record Query Tool](https://github.com/galguibra/blob/main/README.md#participant-record-query-tool)
+        - [Participant Record Query Tool](https://github.com/galguibra/galguibra/blob/main/README.md#participant-record-query-tool)
 
 ___
 
@@ -102,7 +102,7 @@ and while it definitely carries a bit of a learning curve, I've yet to find anot
 
 #### Statistical Appendix
 
-&emsp; &emsp; Written as a companion piece to the data analysis performed using the [hypothesis-testing program](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
+&emsp; &emsp; Written as a companion piece to the data analysis performed using the [hypothesis-testing program](https://github.com/galguibra/galguibra/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
 from the Python section above, this appendix walks through the motivation and methodology behind all the statistics. More than just making a case for my statistical tools of choice, I wanted to provide any interested parties
 with all the information they'd need to actually understand how these tools work and how you can calculate them beyond just plugging numbers into a computer. I've spent a lot of time over the years chasing down
 practical explanations for methods presented in research papers, and I feel like it's the least you can do for your audience if you're including anything unusual or obscure in your methodology. I broke everything
@@ -136,7 +136,7 @@ with automatic conditional formatting, so entries would be created, formatted, d
 #### Participant Record Query Tool
 
 &emsp; &emsp; Having so much retention data for each participant, I wanted to make sure there was one, simple, effective tool to skim only the most essential and broadly useful information, and that it would allow
-users to look up several different participants at the same time. Much like the [spill array](https://github.com/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility) above,
+users to look up several different participants at the same time. Much like the [spill array](https://github.com/galguibra/galguibra/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility) above,
 albeit dependent on user input and not an automated pipeline, the query tool dynamically formats and clears itself as users add and delete entries in the look-up column. You can get contact info, engagement and
 eligibility status, and check for any communications restrictions like study withdrawal or incarceration. Pulling all of this information efficiently from several different sources took multiple layers of temporary,
 interdependent variables and boolean masking, and I made sure to treat potential exceptions for each record field on an individual basis so that if, say, the look-up ID were invalid or a field didn't practically
