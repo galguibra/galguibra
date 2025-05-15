@@ -6,27 +6,27 @@ ___
 
 ___
 
-- [Introduction](https://github.com/galguibra/galguibra/blob/main/README.md#introduction)
+- [Introduction](https://github.com/galguibra/blob/main/README.md#introduction)
 
-- [Overviews](https://github.com/galguibra/galguibra/blob/main/README.md#overviews)
+- [Overview](https://github.com/galguibra/blob/main/README.md#overview)
 
-    - [Python](https://github.com/galguibra/galguibra/blob/main/README.md#python)
+    - [Python](https://github.com/galguibra/blob/main/README.md#python)
  
-        - [Batch CSV Loader](https://github.com/galguibra/galguibra/blob/main/README.md#batch-csv-loader)
+        - [Batch CSV Loader](https://github.com/galguibra/blob/main/README.md#batch-csv-loader)
      
-        - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
+        - [Permuted, Non-Parametric Hypothesis Testing](https://github.com/galguibra/blob/main/README.md#permuted-non-parametric-hypothesis-testing)
      
-        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/galguibra/blob/main/README.md#interactive-data-visualization-dashboard)
+        - [Interactive Data-Visualization Dashboard](https://github.com/galguibra/blob/main/README.md#interactive-data-visualization-dashboard)
      
-    - [LaTeX](https://github.com/galguibra/galguibra/blob/main/README.md#latex)
+    - [LaTeX](https://github.com/galguibra/blob/main/README.md#latex)
  
-        - [Statistical Appendix](https://github.com/galguibra/galguibra/blob/main/README.md#statistical-appendix)
+        - [Statistical Appendix](https://github.com/galguibra/blob/main/README.md#statistical-appendix)
 
-    - [Excel](https://github.com/galguibra/galguibra/blob/main/README.md#excel)
+    - [Excel](https://github.com/galguibra/blob/main/README.md#excel)
  
-        - [Tracking Participants Awaiting Follow-Up Eligibility](https://github.com/galguibra/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility)
+        - [Tracking Participants Awaiting Follow-Up Eligibility](https://github.com/galguibra/blob/main/README.md#tracking-participants-awaiting-follow-up-eligibility)
      
-        - [Participant Record Query Tool](https://github.com/galguibra/galguibra/blob/main/README.md#participant-record-query-tool)
+        - [Participant Record Query Tool](https://github.com/galguibra/blob/main/README.md#participant-record-query-tool)
 
 ___
 
@@ -46,7 +46,7 @@ vizualizations, data-management and querying tools, and more. Included below are
 
 ___
 
-## Overviews
+## Overview
 
 ___
 
